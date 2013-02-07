@@ -1,3 +1,7 @@
 %h1 Pear
 
-= link_to "Sign in with Github", user_omniauth_authorize_path(:github)
+- if current_user
+  You're logged in as
+  = current_user.name
+- else
+  = link_to "Sign in with Github", user_omniauth_authorize_path(:github)
