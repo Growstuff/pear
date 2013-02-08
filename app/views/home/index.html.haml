@@ -1,7 +1,8 @@
 %h1 Pear
 
 - if current_user
-  You're logged in as
+  You're signed in as
   = current_user.name
+  = link_to "Sign out", destroy_user_session_path
 - else
   = link_to "Sign in with Github", user_omniauth_authorize_path(:github)

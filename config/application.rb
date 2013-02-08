@@ -67,5 +67,10 @@ module Pear
 
     # recommended by devise docs, if running on heroku
     config.assets.initialize_on_precompile = false
+
+    # generate HAML by default
+    config.generators do |g|
+      g.template_engine :haml
+    end
   end
 end
