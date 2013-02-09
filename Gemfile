@@ -1,12 +1,21 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'rack', '~>1.4.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+  gem "factory_girl_rails", "~> 4.0"
+end
 
+group :production do
+  gem 'pg'
+end
+
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,7 +39,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 
-gem "factory_girl_rails", "~> 4.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -40,9 +48,6 @@ gem "factory_girl_rails", "~> 4.0"
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
