@@ -9,6 +9,15 @@
   %p
     You're signed in as #{current_user.name}.
     = link_to "Sign out.", destroy_user_session_path
+
+  %h2 Your availability
+  = form_for @user do |f|
+    %p
+      =f.check_box :available
+      I wanna pair on some code!
+    %p
+      =f.submit "Update", :class => 'btn'
+
 - else
   %h2 Get started
   %p= link_to "Sign in with Github", |
