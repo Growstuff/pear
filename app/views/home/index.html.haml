@@ -5,6 +5,12 @@
   =link_to "Growstuff's", "http://growstuff.org/"
   app for matching up coders for pair programming.
 
+  - if notice
+    .alert.alert-success
+      =notice
+  - if alert
+    .alert
+
 - if current_user
   %p
     You're signed in as #{current_user.name}.
