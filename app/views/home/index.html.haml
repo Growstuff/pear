@@ -1,8 +1,21 @@
 %h1 Pear
 
+%p
+  Welcome to Pear,
+  =link_to "Growstuff's", "http://growstuff.org/"
+  app for matching up coders for pair programming.
+
 - if current_user
-  You're signed in as
-  = current_user.name
-  = link_to "Sign out", destroy_user_session_path
+  %p
+    You're signed in as #{current_user.name}.
+    = link_to "Sign out.", destroy_user_session_path
 - else
-  = link_to "Sign in with Github", user_omniauth_authorize_path(:github)
+  %h2 Get started
+  %p= link_to "Sign in with Github", |
+    user_omniauth_authorize_path(:github), |
+    :class => 'btn btn-large btn-primary'
+
+%h2 Who's available for coding?
+
+%p
+  Here's a list of people who've marked themselves as available at present.
