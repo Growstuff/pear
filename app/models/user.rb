@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :omniauthable, :database_authenticatable
-
-  attr_accessible :name, :email, :password, :provider, :uid
+  attr_accessible :name, :email, :password, :provider, :uid, :available
+  scope :available, where(:available => true)
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

@@ -25,6 +25,12 @@ describe 'home/index.html.haml', :type => "view" do
     it 'has a sign out link' do
       assert_select "a", "Sign out."
     end
+    it 'has a form for your availability' do
+      assert_select 'form' do
+        assert_select 'input[type=checkbox]'
+        assert_select 'input[type=submit]'
+      end
+    end
   end
 
 end

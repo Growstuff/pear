@@ -5,10 +5,25 @@
   =link_to "Growstuff's", "http://growstuff.org/"
   app for matching up coders for pair programming.
 
+  - if notice
+    .alert.alert-success
+      =notice
+  - if alert
+    .alert
+
 - if current_user
   %p
     You're signed in as #{current_user.name}.
     = link_to "Sign out.", destroy_user_session_path
+
+  %h2 Your availability
+  = form_for @user do |f|
+    %p
+      =f.check_box :available
+      I wanna pair on some code!
+    %p
+      =f.submit "Update", :class => 'btn'
+
 - else
   %h2 Get started
   %p= link_to "Sign in with Github", |
@@ -17,5 +32,10 @@
 
 %h2 Who's available for coding?
 
-%p
-  Here's a list of people who've marked themselves as available at present.
+- if @available && @available.length > 0
+  %ul
+    - @available.each do |u|
+      %li= u.name
+- else
+  %p Nobody :(
+
