@@ -21,6 +21,10 @@
     %p
       =f.check_box :available
       I wanna pair on some code!
+    .field
+      %p
+        =f.label :time_zone
+        =f.time_zone_select :time_zone
     %p
       =f.submit "Update", :class => 'btn'
 
