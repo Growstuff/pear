@@ -5,7 +5,7 @@
   %h3.boo is not available :-(
 
 %b Time zone: 
-= @user.time_zone
+= "#{@user.time_zone} (UTC#{@user.offset_string})"
 
 -if can? :edit, @user
   %br

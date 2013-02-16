@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def offset_string()
+    ActiveSupport::TimeZone[time_zone].formatted_offset
+  end
 end
