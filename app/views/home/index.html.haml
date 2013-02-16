@@ -29,7 +29,9 @@
 - if @available && @available.length > 0
   %ul
     - @available.each do |u|
-      %li= u.name
+      %li
+        = link_to u.name, u
+        (UTC#{u.offset_string})
 - else
   %p Nobody :(
 
