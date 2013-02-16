@@ -1,8 +1,8 @@
 %h1= @user.name
-
-%b Available?
-= @user.available ? "Yes" : "No"
-%br
+- if @user.available
+  %h3.yay is available!
+- else
+  %h3.boo is not available :-(
 
 %b Time zone: 
 = @user.time_zone
