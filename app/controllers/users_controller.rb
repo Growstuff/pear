@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   def index
     respond_to do |format|
+      @users = User.unscoped.all
       format.html # index.html.haml
     end
   end

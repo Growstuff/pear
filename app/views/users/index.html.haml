@@ -1,2 +1,11 @@
-%h1 User#index
-%p Find me in app/views/user/index.html.haml
+%h1 All contributors
+%table
+  %tr
+    %th Login name
+    %th Available?
+    %th Time zone
+  - @users.each do |u|
+    %tr
+      %td= link_to u.name, u
+      %td= u.available ? "✔" : ""
+      %td= u.time_zone
