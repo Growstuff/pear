@@ -27,11 +27,13 @@
 %h2 Who's available for coding?
 
 - if @available && @available.length > 0
-  %ul
+  %table.table.table-striped
     - @available.each do |u|
-      %li
-        = link_to u.name, u
-        (UTC#{u.offset_string})
+      %tr
+        %td
+          = link_to u.name, u
+        %td
+          = u.tz_string
 - else
   %p Nobody :(
 
