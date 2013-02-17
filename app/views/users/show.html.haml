@@ -1,2 +1,12 @@
-%h1 User#index
-%p Find me in app/views/user/index.html.haml
+%h1= @user.name
+- if @user.available
+  %h3.yay is available!
+- else
+  %h3.boo is not available :-(
+
+%b Time zone: 
+= @user.tz_string
+
+-if can? :edit, @user
+  %br
+  = link_to 'Edit', edit_user_path(@user), :class => 'btn'

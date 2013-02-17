@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   devise :omniauthable, :database_authenticatable
-  attr_accessible :name, :email, :password, :provider, :uid, :available
+  attr_accessible :name, :email, :password, :provider, :uid,
+    :available, :time_zone
   scope :available, where(:available => true)
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
@@ -14,5 +15,10 @@ class User < ActiveRecord::Base
                           )
     end
     user
+  end
+
+  def tz_string()
+    tz = ActiveSupport::TimeZone[time_zone]
+    "#{time_zone} (UTC#{tz.formatted_offset})"
   end
 end
