@@ -18,7 +18,11 @@ class User < ActiveRecord::Base
   end
 
   def tz_string()
-    tz = ActiveSupport::TimeZone[time_zone]
-    "#{time_zone} (UTC#{tz.formatted_offset})"
+    if time_zone
+      tz = ActiveSupport::TimeZone[time_zone]
+      "#{time_zone} (UTC#{tz.formatted_offset})"
+    else
+      "Time zone not set"
+    end
   end
 end
