@@ -9,6 +9,7 @@ gem 'rack', '~>1.4.5'
 group :development, :test do
   gem 'sqlite3'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'multi_json'
 end
 
 group :production do

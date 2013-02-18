@@ -18,11 +18,29 @@ class User < ActiveRecord::Base
   end
 
   def tz_string()
+    time_zone || 'not set'
+  end
+
+  def tz_offset()
     if time_zone
       tz = ActiveSupport::TimeZone[time_zone]
-      "#{time_zone} (UTC#{tz.formatted_offset})"
+      "UTC#{tz.now.formatted_offset}"
     else
-      "Time zone not set"
+      "not set"
     end
   end
+
+  # pretty sure this can't be done as a scope
+  def User.tz_order
+    User.available.sort do |a,b|
+      atz = a.time_zone
+      btz = b.time_zone
+      if atz and btz
+        ActiveSupport::TimeZone.new(atz).now.utc_offset <=> ActiveSupport::TimeZone.new(btz).now.utc_offset
+      else
+        1
+      end
+    end
+  end
+
 end
