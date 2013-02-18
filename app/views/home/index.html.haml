@@ -15,7 +15,6 @@
   %p
     You're signed in as #{current_user.name}.
     = link_to "Sign out.", destroy_user_session_path
-
   = render :partial => "users/availability"
 
 - else
@@ -28,12 +27,18 @@
 
 - if @available && @available.length > 0
   %table.table.table-striped
+    %tr
+      %td Name
+      %td Timezone/approximate location
+      %td Offset (DST aware)
     - @available.each do |u|
       %tr
         %td
           = link_to u.name, u
         %td
           = u.tz_string
+        %td
+          = u.tz_offset
 - else
   %p Nobody :(
 
