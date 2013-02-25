@@ -10,6 +10,7 @@ class Ability
     if user
       # managing your own user settings
       can :update, User, :id => user.id
+      can :read_email, :all
     end
   end
 end
