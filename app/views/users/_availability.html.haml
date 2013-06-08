@@ -8,6 +8,12 @@
       =f.label :time_zone
       =f.time_zone_select :time_zone
   %p
+    =f.check_box :can_mentor
+    I can mentor
+  %p
+    =f.check_box :wants_mentor
+    I'm looking for a mentor
+  %p
     =f.submit "Update", :class => 'btn'
 
 

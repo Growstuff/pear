@@ -28,9 +28,11 @@
 - if @available && @available.length > 0
   %table.table.table-striped
     %tr
-      %td Name
-      %td Timezone/approximate location
-      %td Offset (DST aware)
+      %th Name
+      %th Timezone/approximate location
+      %th Offset (DST aware)
+      %th Can mentor
+      %th Wants a mentor
     - @available.each do |u|
       %tr
         %td
@@ -39,6 +41,12 @@
           = u.tz_string
         %td
           = u.tz_offset
+        %td
+          - if u.can_mentor
+            %i.icon-ok
+        %td
+          - if u.wants_mentor
+            %i.icon-ok
 - else
   %p Nobody :(
 
