@@ -4,9 +4,19 @@
 - else
   %h3.boo is not available :-(
 
-%b Time zone: 
-= @user.tz_string
+%p
+  %b Time zone: 
+  = @user.tz_string
+
+- if @user.can_mentor
+  %p 
+    %i.icon-ok
+    Can mentor.
+
+- if @user.wants_mentor
+  %p
+    %i.icon-ok
+    Wants a mentor.
 
 -if can? :edit, @user
-  %br
-  = link_to 'Edit', edit_user_path(@user), :class => 'btn'
+  %p= link_to 'Edit', edit_user_path(@user), :class => 'btn'
