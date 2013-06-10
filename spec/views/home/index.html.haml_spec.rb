@@ -18,11 +18,12 @@ describe 'home/index.html.haml', :type => "view" do
 
     it 'shows nobody available' do
       render
-      rendered.should_contain 'Nobody'
+      rendered.should include 'Nobody'
     end
 
     it 'shows the availability table' do
       @someone = FactoryGirl.create(:available_user)
+      assign(:available, [@someone])
       render
       assert_select 'table'
     end
@@ -54,6 +55,7 @@ describe 'home/index.html.haml', :type => "view" do
   context 'mentoring' do
     before(:each) do
       @mentor = FactoryGirl.create(:mentor)
+      assign(:available, [@mentor])
       # controller.stub(:current_user) { @mentor }
       render
     end
@@ -64,7 +66,6 @@ describe 'home/index.html.haml', :type => "view" do
     end
 
     it 'has checkmarks for mentoring' do
-      puts rendered
       assert_select 'i.icon-ok', :count => 2
     end
   end
